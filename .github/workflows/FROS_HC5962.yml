@@ -29,7 +29,9 @@ env:
   FEEDS_CONF: feeds.conf.default
   #Lean_LEDE_HC5962.config
   CONFIG_FILE: FROS_HC5962.config
+  #定义插件源
   DIY_P1_SH: diy-part1.sh
+  #修改路由器无线配置
   DIY_P2_SH: diy-part2.sh
   UPLOAD_BIN_DIR: true
   UPLOAD_FIRMWARE: true
