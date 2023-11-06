@@ -24,6 +24,7 @@ on:
 #    types: started
 
 env:
+  ACTIONS_RUNTIME_RETENTION_DAYS: 30 #设置 Github Actions 运行日志保存的天，数避免出现错误The log was not found. It may have been deleted based on retention settings.
   REPO_URL: https://github.com/openfros/fros
   REPO_BRANCH: main
   FEEDS_CONF: feeds.conf.default
