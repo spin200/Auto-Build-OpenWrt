@@ -25,20 +25,20 @@ on:
 
 env:
   ACTIONS_RUNTIME_RETENTION_DAYS: 30 #设置 Github Actions 运行日志保存的天，数避免出现错误The log was not found. It may have been deleted based on retention settings.
-  REPO_URL: https://github.com/openfros/fros
-  REPO_BRANCH: main
-  FEEDS_CONF: feeds.conf.default
+  REPO_URL: https://github.com/openfros/fros #源码仓库地址
+  REPO_BRANCH: main #源码分支
+  FEEDS_CONF: feeds.conf.default #自定义feeds.conf.default文件名
   #Lean_LEDE_HC5962.config
-  CONFIG_FILE: FROS_HC5962.config
+  CONFIG_FILE: FROS_HC5962.config #自定义.config文件名
   #定义插件源
-  DIY_P1_SH: diy-part1.sh
+  DIY_P1_SH: diy-part1.sh #自定义diy-part1.sh文件名
   #修改路由器无线配置
-  DIY_P2_SH: diy-part2.sh
-  UPLOAD_BIN_DIR: true
-  UPLOAD_FIRMWARE: true
-  UPLOAD_COWTRANSFER: false
-  UPLOAD_WETRANSFER: true
-  UPLOAD_RELEASE: true
+  DIY_P2_SH: diy-part2.sh #自定义diy-part2.sh文件名
+  UPLOAD_BIN_DIR: true #上传 bin 目录。即包含所有 ipk 文件和固件的目录。默认false
+  UPLOAD_FIRMWARE: true #上传固件目录。默认true
+  UPLOAD_COWTRANSFER: false #上传固件到奶牛快传。默认false
+  UPLOAD_WETRANSFER: true  #上传固件到 WeTransfer 。默认false
+  UPLOAD_RELEASE: true  #上传固件到 releases 。默认false
   TZ: Asia/Shanghai
 
 jobs:
