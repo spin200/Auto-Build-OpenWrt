@@ -78,30 +78,18 @@ jobs:
     - name: Update Package Lists  
       run: sudo apt update -y  
   
-    - name: Upgrade Packages  
+    - name: 更新源  
       run: sudo apt full-upgrade -y  
   
-    - name: Install Dependencies  
+    - name: 系统初始化安装依赖  
       run: |  
-        sudo apt install -y ack antlr3 asciidoc autoconf automake autopoint binutils bison build-essential \  
-        bzip2 ccache cmake cpio curl device-tree-compiler fastjar flex gawk gettext gcc-multilib g++-multilib \  
-        git gperf haveged help2man intltool libc6-dev-i386 libelf-dev libglib2.0-dev libgmp3-dev libltdl-dev \  
-        libmpc-dev libmpfr-dev libncurses5-dev libncursesw5-dev libreadline-dev libssl-dev libtool lrzsz \  
-        mkisofs msmtp nano ninja-build p7zip p7zip-full patch pkgconf python2.7 python3 python3-pyelftools \  
-        libpython3-dev qemu-utils rsync scons squashfs-tools subversion swig texinfo uglifyjs upx-ucl unzip \  
-        vim wget xmlto xxd zlib1g-dev python3-setuptools
-    - name: 更新源并安装依赖项
+        sudo apt install -y ack antlr3 asciidoc autoconf automake autopoint binutils bison build-essential bzip2 ccache cmake cpio curl device-tree-compiler fastjar flex gawk gettext gcc-multilib g++-multilib git gperf haveged help2man intltool libc6-dev-i386 libelf-dev libglib2.0-dev libgmp3-dev libltdl-dev libmpc-dev libmpfr-dev libncurses5-dev libncursesw5-dev libreadline-dev libssl-dev libtool lrzsz mkisofs msmtp nano ninja-build p7zip p7zip-full patch pkgconf python2.7 python3 python3-pyelftools \  
+        libpython3-dev qemu-utils rsync scons squashfs-tools subversion swig texinfo uglifyjs upx-ucl unzip vim wget xmlto xxd zlib1g-dev python3-setuptools
+    - name: 更新feeds并安装依赖项
       run: |
           cd openwrt 
           ./scripts/feeds update -a
           ./scripts/feeds install -a
-          deps=$(make package/symlinks/list | awk '{print $1}') # 获取所有依赖包列表
-          for dep in $deps; do  # 遍历依赖包列表并检查安装 
-          if ! grep -q "package/$dep" feeds.conf.default; then  
-            echo "安装缺失的依赖: $dep"  
-            ./scripts/feeds install $dep  
-          fi  
-          done  
     - name: Load custom configuration
       run: |
         [ -e files ] && mv files openwrt/files
